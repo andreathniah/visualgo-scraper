@@ -1,5 +1,5 @@
 # visualgo-scraper
-Simple web-scraping service to print/save slides from VisuAlgo.net used by computing students of National University of Singapore (specifically modules by Steven Halim).
+Simple web-scraping service to print/save slides from www.VisuAlgo.net used by computing students of National University of Singapore (specifically modules by Steven Halim).
 
 ## structure
 ```
@@ -11,7 +11,7 @@ Simple web-scraping service to print/save slides from VisuAlgo.net used by compu
 ```
 
 ## included
-[cors-anywhere: to faciliate cross origin resource sharing](https://github.com/Rob--W/cors-anywhere/)
+[cors-anywhere](https://github.com/Rob--W/cors-anywhere/): to faciliate cross origin resource sharing
 
 ## questions
 ```javascript
