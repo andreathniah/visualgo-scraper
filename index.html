@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scrape Visualgo</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/normalize.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118996883-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scrape Visualgo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  </head>
 
-    gtag('config', 'UA-118996883-1');
-  </script>
-</head>
-
-<body>
-  <div class="container">
-    <div class="row">
-      <h2>Scrape, Print, Save your VisuAlgo Slides</h2>
-      <p>Done by a student who really wanna pass CS2040C. You're welcome.<br>
-        Simply enter VisuAlgo link of any modules in the input box and you're ready to go!</p>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h2>Scrape, Print, Save your VisuAlgo Slides</h2>
+        <p>Done by a student who really wanna pass CS2040C. You're welcome.<br>
+          Simply enter VisuAlgo link of any modules in the input box and you're ready to go!</p>
         <p>Sorry guys, this thing doesn't support web-scraping of the VisuAlgo quiz, I tried.</p>
       </div>
       <div class="row">
@@ -36,42 +26,45 @@
   </body>
 
   <script>
-  function storeURL() {
-    var urlValue, typeURL, domain;
+    function storeURL() {
+      var urlValue,
+        typeURL,
+        domain;
 
-    if (typeof(Storage) !== "undefined") {
-      urlValue = document.getElementById("urlInput").value;
-      localStorage.setItem("urlInput", urlValue);
+      if (typeof(Storage) !== "undefined") {
+        urlValue = document.getElementById("urlInput").value;
+        localStorage.setItem("urlInput", urlValue);
 
-      // convert to lowercase
-      urlValue = urlValue.toLowerCase();
-      typeURL = determineType(urlValue);
+        // convert to lowercase
+        urlValue = urlValue.toLowerCase();
+        typeURL = determineType(urlValue);
 
-      switch (typeURL) {
-        case 0: window.open("visualgo.html", "_blank"); break;
-        default: domain = getDomain(urlValue);
-        alert(domain + " is not supported.");
-      }
-      document.getElementById("urlInput").value = "";
-    }
-    else {
-      alert("Browser not compatible with localStorage");
-    }
-  }
-
-  function determineType(urlString) {
-    var searchString = ["visualgo.net"];
-    for (i=0; i<searchString.length; i++) {
-      if (urlString.search(searchString[i]) != -1) {
-        return i;
+        switch (typeURL) {
+          case 0:
+            window.open("visualgo.html", "_blank");
+            break;
+          default:
+            domain = getDomain(urlValue);
+            alert(domain + " is not supported.");
+        }
+        document.getElementById("urlInput").value = "";
+      } else {
+        alert("Browser not compatible with localStorage");
       }
     }
-  }
 
-  function getDomain(urlString) {
-    var urlArray = urlString.split("/");
-    return urlArray[2].toString();
-  }
+    function determineType(urlString) {
+      var searchString = ["visualgo.net"];
+      for (i = 0; i < searchString.length; i++) {
+        if (urlString.search(searchString[i]) != -1) {
+          return i;
+        }
+      }
+    }
 
-</script>
+    function getDomain(urlString) {
+      var urlArray = urlString.split("/");
+      return urlArray[2].toString();
+    }
+  </script>
 </html>
